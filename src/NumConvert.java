@@ -1,12 +1,19 @@
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class NumConvert {
+
+	private static final Logger LOGGER = Logger.getLogger(NumConvert.class.getName());
+	private static final String HEZAR = "Hezar";
+	private static final String MILLION = "Million";
+	private static final String MILLIARD = "Milliard";
 
 	// one digit toChar
 	static String oneDigitToChar(String num) {
 
-		int digit = Integer.parseInt(num);
-		String result = new String();
+		var digit = Integer.parseInt(num);
+		var result = "";
 
 		if (digit == 1) {
 			result = "Yek";
@@ -35,320 +42,101 @@ public class NumConvert {
 	// two digits toChar
 	static String twoDigitsToChar(String num) {
 
-		int digit = Integer.parseInt(num);
-		String result = new String();
-		String rDigit = String.valueOf(num.charAt(1));
+		var digit = Integer.parseInt(num);
+		var result = "";
+		var rDigit = String.valueOf(num.charAt(1));
+		var firstDigitFromRight = digit % 10;
 
-		switch (digit) {
-			case 10:
-				result = "Dah";
+		switch (digit / 10) {
+			case 0:
+				result = oneDigitToChar(rDigit);
 				break;
-			case 11:
-				result = "Yazdah";
-				break;
-			case 12:
-				result = "Davazdah";
-				break;
-			case 13:
-				result = "Sizdah";
-				break;
-			case 14:
-				result = "Chahardah";
-				break;
-			case 15:
-				result = "Panzdah";
-				break;
-			case 16:
-				result = "Shanzdah";
-				break;
-			case 17:
-				result = "Hefdah";
-				break;
-			case 18:
-				result = "Hejdah";
-				break;
-			case 19:
-				result = "Noozdah";
-				break;
-			default:
-
-				switch (digit / 10) {
-					case 0:
-						result = oneDigitToChar(rDigit);
+			case 1:
+				switch (digit) {
+					case 10:
+						result = "Dah";
 						break;
-					case 2:
-						switch (digit % 10) {
-							case 0:
-								result = "Bist";
-								break;
-							case 1:
-								result = "Bist o " + oneDigitToChar(rDigit);
-								break;
-							case 2:
-								result = "Bist o " + oneDigitToChar(rDigit);
-								break;
-							case 3:
-								result = "Bist o " + oneDigitToChar(rDigit);
-								break;
-							case 4:
-								result = "Bist o " + oneDigitToChar(rDigit);
-								break;
-							case 5:
-								result = "Bist o " + oneDigitToChar(rDigit);
-								break;
-							case 6:
-								result = "Bist o " + oneDigitToChar(rDigit);
-								break;
-							case 7:
-								result = "Bist o " + oneDigitToChar(rDigit);
-								break;
-							case 8:
-								result = "Bist o " + oneDigitToChar(rDigit);
-								break;
-							case 9:
-								result = "Bist o " + oneDigitToChar(rDigit);
-								break;
-						}
+					case 11:
+						result = "Yazdah";
 						break;
-					case 3:
-						switch (digit % 10) {
-							case 0:
-								result = "Si";
-								break;
-							case 1:
-								result = "Si o " + oneDigitToChar(rDigit);
-								break;
-							case 2:
-								result = "Si o " + oneDigitToChar(rDigit);
-								break;
-							case 3:
-								result = "Si o " + oneDigitToChar(rDigit);
-								break;
-							case 4:
-								result = "Si o " + oneDigitToChar(rDigit);
-								break;
-							case 5:
-								result = "Si o " + oneDigitToChar(rDigit);
-								break;
-							case 6:
-								result = "Si o " + oneDigitToChar(rDigit);
-								break;
-							case 7:
-								result = "Si o " + oneDigitToChar(rDigit);
-								break;
-							case 8:
-								result = "Si o " + oneDigitToChar(rDigit);
-								break;
-							case 9:
-								result = "Si o " + oneDigitToChar(rDigit);
-								break;
-						}
+					case 12:
+						result = "Davazdah";
 						break;
-					case 4:
-						switch (digit % 10) {
-							case 0:
-								result = "Chehel";
-								break;
-							case 1:
-								result = "Chehel o " + oneDigitToChar(rDigit);
-								break;
-							case 2:
-								result = "Chehel o " + oneDigitToChar(rDigit);
-								break;
-							case 3:
-								result = "Chehel o " + oneDigitToChar(rDigit);
-								break;
-							case 4:
-								result = "Chehel o " + oneDigitToChar(rDigit);
-								break;
-							case 5:
-								result = "Chehel o " + oneDigitToChar(rDigit);
-								break;
-							case 6:
-								result = "Chehel o " + oneDigitToChar(rDigit);
-								break;
-							case 7:
-								result = "Chehel o " + oneDigitToChar(rDigit);
-								break;
-							case 8:
-								result = "Chehel o " + oneDigitToChar(rDigit);
-								break;
-							case 9:
-								result = "Chehel o " + oneDigitToChar(rDigit);
-								break;
-						}
+					case 13:
+						result = "Sizdah";
 						break;
-					case 5:
-						switch (digit % 10) {
-							case 0:
-								result = "Panjah";
-								break;
-							case 1:
-								result = "Panjah o " + oneDigitToChar(rDigit);
-								break;
-							case 2:
-								result = "Panjah o " + oneDigitToChar(rDigit);
-								break;
-							case 3:
-								result = "Panjah o " + oneDigitToChar(rDigit);
-								break;
-							case 4:
-								result = "Panjah o " + oneDigitToChar(rDigit);
-								break;
-							case 5:
-								result = "Panjah o " + oneDigitToChar(rDigit);
-								break;
-							case 6:
-								result = "Panjah o " + oneDigitToChar(rDigit);
-								break;
-							case 7:
-								result = "Panjah o " + oneDigitToChar(rDigit);
-								break;
-							case 8:
-								result = "Panjah o " + oneDigitToChar(rDigit);
-								break;
-							case 9:
-								result = "Panjah o " + oneDigitToChar(rDigit);
-								break;
-						}
+					case 14:
+						result = "Chahardah";
 						break;
-					case 6:
-						switch (digit % 10) {
-							case 0:
-								result = "Shast";
-								break;
-							case 1:
-								result = "Shast o " + oneDigitToChar(rDigit);
-								break;
-							case 2:
-								result = "Shast o " + oneDigitToChar(rDigit);
-								break;
-							case 3:
-								result = "Shast o " + oneDigitToChar(rDigit);
-								break;
-							case 4:
-								result = "Shast o " + oneDigitToChar(rDigit);
-								break;
-							case 5:
-								result = "Shast o " + oneDigitToChar(rDigit);
-								break;
-							case 6:
-								result = "Shast o " + oneDigitToChar(rDigit);
-								break;
-							case 7:
-								result = "Shast o " + oneDigitToChar(rDigit);
-								break;
-							case 8:
-								result = "Shast o " + oneDigitToChar(rDigit);
-								break;
-							case 9:
-								result = "Shast o " + oneDigitToChar(rDigit);
-								break;
-						}
+					case 15:
+						result = "Panzdah";
 						break;
-					case 7:
-						switch (digit % 10) {
-							case 0:
-								result = "Haftad";
-								break;
-							case 1:
-								result = "Haftad o " + oneDigitToChar(rDigit);
-								break;
-							case 2:
-								result = "Haftad o " + oneDigitToChar(rDigit);
-								break;
-							case 3:
-								result = "Haftad o " + oneDigitToChar(rDigit);
-								break;
-							case 4:
-								result = "Haftad o " + oneDigitToChar(rDigit);
-								break;
-							case 5:
-								result = "Haftad o " + oneDigitToChar(rDigit);
-								break;
-							case 6:
-								result = "Haftad o " + oneDigitToChar(rDigit);
-								break;
-							case 7:
-								result = "Haftad o " + oneDigitToChar(rDigit);
-								break;
-							case 8:
-								result = "Haftad o " + oneDigitToChar(rDigit);
-								break;
-							case 9:
-								result = "Haftad o " + oneDigitToChar(rDigit);
-								break;
-						}
+					case 16:
+						result = "Shanzdah";
 						break;
-					case 8:
-						switch (digit % 10) {
-							case 0:
-								result = "Hashtad";
-								break;
-							case 1:
-								result = "Hashtad o " + oneDigitToChar(rDigit);
-								break;
-							case 2:
-								result = "Hashtad o " + oneDigitToChar(rDigit);
-								break;
-							case 3:
-								result = "Hashtad o " + oneDigitToChar(rDigit);
-								break;
-							case 4:
-								result = "Hashtad o " + oneDigitToChar(rDigit);
-								break;
-							case 5:
-								result = "Hashtad o " + oneDigitToChar(rDigit);
-								break;
-							case 6:
-								result = "Hashtad o " + oneDigitToChar(rDigit);
-								break;
-							case 7:
-								result = "Hashtad o " + oneDigitToChar(rDigit);
-								break;
-							case 8:
-								result = "Hashtad o " + oneDigitToChar(rDigit);
-								break;
-							case 9:
-								result = "Hashtad o " + oneDigitToChar(rDigit);
-								break;
-						}
+					case 17:
+						result = "Hefdah";
 						break;
-					case 9:
-						switch (digit % 10) {
-							case 0:
-								result = "Navad";
-								break;
-							case 1:
-								result = "Navad o " + oneDigitToChar(rDigit);
-								break;
-							case 2:
-								result = "Navad o " + oneDigitToChar(rDigit);
-								break;
-							case 3:
-								result = "Navad o " + oneDigitToChar(rDigit);
-								break;
-							case 4:
-								result = "Navad o " + oneDigitToChar(rDigit);
-								break;
-							case 5:
-								result = "Navad o " + oneDigitToChar(rDigit);
-								break;
-							case 6:
-								result = "Navad o " + oneDigitToChar(rDigit);
-								break;
-							case 7:
-								result = "Navad o " + oneDigitToChar(rDigit);
-								break;
-							case 8:
-								result = "Navad o " + oneDigitToChar(rDigit);
-								break;
-							case 9:
-								result = "Navad o " + oneDigitToChar(rDigit);
-								break;
-						}
+					case 18:
+						result = "Hejdah";
+						break;
+					case 19:
+						result = "Noozdah";
+						break;
+					default:
 						break;
 				}
+				break;
+			case 2:
+				if (firstDigitFromRight == 0)
+					result = "Bist";
+				else
+					result = "Bist o " + oneDigitToChar(rDigit);
+				break;
+			case 3:
+				if (firstDigitFromRight == 0)
+					result = "Si";
+				else
+					result = "Si o " + oneDigitToChar(rDigit);
+				break;
+			case 4:
+				if (firstDigitFromRight == 0)
+					result = "Chehel";
+				else
+					result = "Chehel o " + oneDigitToChar(rDigit);
+				break;
+			case 5:
+				if (firstDigitFromRight == 0)
+					result = "Panjah";
+				else
+					result = "Panjah o " + oneDigitToChar(rDigit);
+				break;
+			case 6:
+				if (firstDigitFromRight == 0)
+					result = "Shast";
+				else
+					result = "Shast o " + oneDigitToChar(rDigit);
+				break;
+			case 7:
+				if (firstDigitFromRight == 0)
+					result = "Haftad";
+				else
+					result = "Haftad o " + oneDigitToChar(rDigit);
+				break;
+			case 8:
+				if (firstDigitFromRight == 0)
+					result = "Hashtad";
+				else
+					result = "Hashtad o " + oneDigitToChar(rDigit);
+				break;
+			case 9:
+				if (firstDigitFromRight == 0)
+					result = "Navad";
+				else
+					result = "Navad o " + oneDigitToChar(rDigit);
+				break;
+			default:
+				break;
 		}
 
 		return result;
@@ -357,9 +145,9 @@ public class NumConvert {
 	// three digit toChar
 	static String threeDigitsToChar(String num) {
 
-		int digit = Integer.parseInt(num);
-		String rDigit = String.valueOf(num.charAt(1)) + String.valueOf(num.charAt(2));
-		String result = new String();
+		var digit = Integer.parseInt(num);
+		var rDigit = String.valueOf(num.charAt(1)) + String.valueOf(num.charAt(2));
+		var result = "";
 
 		switch (digit / 100) {
 			case 0:
@@ -428,6 +216,8 @@ public class NumConvert {
 					result = "Nohsad o " + twoDigitsToChar(rDigit);
 				}
 				break;
+			default:
+				break;
 		}
 
 		return result;
@@ -436,73 +226,79 @@ public class NumConvert {
 	// toChar
 	static void toChar(String num) {
 
-		int digit = num.length();
-		String result = new String();
-		String[] temp = new String[12];
+		var digit = num.length();
+		var result = new StringBuilder();
+		var temp = new String[12];
 
-		for (int i = 0; i < 12; i++) {
+		for (var i = 0; i < 12; i++) {
 			temp[i] = "0";
 		}
 
-		int j = 11;
+		var j = 11;
 
-		for (int i = digit - 1; i >= 0; i--) {
+		for (var i = digit - 1; i >= 0; i--) {
 			temp[j] = String.valueOf(num.charAt(i));
 			j--;
 		}
 
-		String temp2, temp3, milliardOTest = new String(), millionOTest = new String(), hezarOTest = new String();
+		String temp2;
+		String temp3;
+		var milliardOTest = new StringBuilder();
+		var millionOTest = new StringBuilder();
+		var hezarOTest = new StringBuilder();
 
-		for (int i = 3; i < 12; i++) {
-			milliardOTest += temp[i];
+		for (var i = 3; i < 12; i++) {
+			milliardOTest.append(temp[i]);
 		}
-		for (int i = 6; i < 12; i++) {
-			millionOTest += temp[i];
+		for (var i = 6; i < 12; i++) {
+			millionOTest.append(temp[i]);
 		}
-		for (int i = 9; i < 12; i++) {
-			hezarOTest += temp[i];
+		for (var i = 9; i < 12; i++) {
+			hezarOTest.append(temp[i]);
 		}
 
-		for (int i = 0; i < 12; i += 3) {
+		for (var i = 0; i < 12; i += 3) {
 			temp2 = temp[i] + temp[i + 1] + temp[i + 2];
 			temp3 = temp[i] + temp[i + 1];
 
 			if (!temp2.equals("000")) {
 				switch (i) {
 					case 0:
-						result += threeDigitsToChar(temp2) + " Milliard";
-						if (!milliardOTest.equals("000000000")) {
-							result += " o ";
+						result.append(threeDigitsToChar(temp2) + " " + MILLIARD);
+						if (!milliardOTest.toString().equals("000000000")) {
+							result.append(" o ");
 						}
 						break;
 					case 3:
-						result += threeDigitsToChar(temp2) + " Million";
-						if (!millionOTest.equals("000000")) {
-							result += " o ";
+						result.append(threeDigitsToChar(temp2) + " " + MILLION);
+						if (!millionOTest.toString().equals("000000")) {
+							result.append(" o ");
 						}
 						break;
 					case 6:
 						if (temp3.equals("00") && temp[i + 2].equals("1")) {
-							result += "Hezar";
-							if (!hezarOTest.equals("000")) {
-								result += " o ";
+							result.append(HEZAR);
+							if (!hezarOTest.toString().equals("000")) {
+								result.append(" o ");
 							}
 						} else {
-							result += threeDigitsToChar(temp2) + " Hezar";
-							if (!hezarOTest.equals("000")) {
-								result += " o ";
+							result.append(threeDigitsToChar(temp2) + " " + HEZAR);
+							if (!hezarOTest.toString().equals("000")) {
+								result.append(" o ");
 							}
 
 						}
 						break;
 					case 9:
-						result += threeDigitsToChar(temp2);
+						result.append(threeDigitsToChar(temp2));
+						break;
+					default:
 						break;
 				}
 			}
 		}
-		int flag = 0;
-		for (int k = 0; k < 12; k++) {
+		var flag = 0;
+		for (var k = 0; k < 12; k++) {
 			if (temp[k].equals("0")) {
 				flag = 1;
 			} else {
@@ -511,9 +307,10 @@ public class NumConvert {
 			}
 		}
 		if (flag == 1) {
-			result += "Sefr";
+			result.append("Sefr");
 		}
-		System.out.println(result);
+		var out = result.toString();
+		LOGGER.log(Level.INFO, out);
 
 	}
 
@@ -525,17 +322,17 @@ public class NumConvert {
 
 		String[] numArr = num.split(" ");
 
-		for (int i = 0; i < numArr.length; i++) {
+		for (var i = 0; i < numArr.length; i++) {
 
 			if (numArr[i].equals("o")) {
 				continue;
 			}
-			if (numArr[i].equals("Milliard") || numArr[i].equals("Million")) {
+			if (numArr[i].equals(MILLIARD) || numArr[i].equals(MILLION)) {
 				temp *= stringToNum(numArr[i]);
 				result += temp;
 				temp = 0;
 			}
-			if (numArr[i].equals("Hezar")) {
+			if (numArr[i].equals(HEZAR)) {
 				if (temp == 0) {
 					temp = stringToNum(numArr[i]);
 					result += temp;
@@ -546,7 +343,7 @@ public class NumConvert {
 					temp = 0;
 				}
 			}
-			if (!numArr[i].equals("Milliard") && !numArr[i].equals("Million") && !numArr[i].equals("Hezar")) {
+			if (!numArr[i].equals(MILLIARD) && !numArr[i].equals(MILLION) && !numArr[i].equals(HEZAR)) {
 				temp += stringToNum(numArr[i]);
 			}
 
@@ -560,7 +357,7 @@ public class NumConvert {
 	// Changes string to number and is used in toNum() function
 	static int stringToNum(String num) {
 
-		int result = 0;
+		var result = 0;
 
 		switch (num) {
 			case "Sefr":
@@ -674,14 +471,16 @@ public class NumConvert {
 			case "Nohsad":
 				result = 900;
 				break;
-			case "Hezar":
+			case HEZAR:
 				result = 1000;
 				break;
-			case "Million":
+			case MILLION:
 				result = 1000000;
 				break;
-			case "Milliard":
+			case MILLIARD:
 				result = 1000000000;
+				break;
+			default:
 				break;
 		}
 
@@ -702,24 +501,24 @@ public class NumConvert {
 
 	public static void main(String[] args) {
 
-		Scanner sc = new Scanner(System.in);
+		var sc = new Scanner(System.in);
 
 		// number-to-character or character-to-number command
-		System.out.println(
+		LOGGER.log(Level.INFO,
 				"Please enter the command:\n('0' for converting number to letters and '1' for converting letters to number)");
-		int command = Integer.parseInt(sc.nextLine());
+		var command = Integer.parseInt(sc.nextLine());
 
-		String num = new String();
+		var num = "";
 
 		// '0' for number-to-character & '1' for character-to-number
 		if (command == 0) {
-			System.out.println("Please enter your number:");
+			LOGGER.log(Level.INFO, "Please enter your number:");
 			num = sc.nextLine();
 
 			// greater than 12 digits error
 			while (true) {
 				if (num.length() > 12) {
-					System.out.println("Entery has more than 12 digits. Please Enter your number again:");
+					LOGGER.log(Level.INFO, "Entery has more than 12 digits. Please Enter your number again:");
 					num = sc.nextLine();
 				} else {
 					break;
@@ -727,12 +526,12 @@ public class NumConvert {
 			}
 			toChar(num);
 		} else if (command == 1) {
-			System.out.println("Please enter your number (in lettesrs):");
+			LOGGER.log(Level.INFO, "Please enter your number (in lettesrs):");
 			num = sc.nextLine();
-
-			System.out.println(toNum(num));
+			var out = String.valueOf(toNum(num));
+			LOGGER.log(Level.INFO, out);
 		} else {
-			System.out.println("Wrong command!");
+			LOGGER.log(Level.INFO, "Wrong command!");
 		}
 
 		sc.close();
